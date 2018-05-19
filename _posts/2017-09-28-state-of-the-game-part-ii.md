@@ -1,0 +1,115 @@
+---
+id: 115
+title: State of the Game Part II
+date: 2017-09-28T20:12:20+00:00
+author: Manuel
+layout: post
+guid: http://manuel-huber.de/?p=115
+permalink: /2017/09/28/state-of-the-game-part-ii/
+enclosure:
+  - |
+    http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4
+    1467406
+    video/mp4
+    
+categories:
+  - DKP
+  - Unity
+---
+Almost forgot to write this today&#8230;
+
+### Health & Attacks
+
+My health system is pretty straight forward. I have a generic _Damagable_ class that adds hitpoints, a healthbar UI above the game object and exposes a public function _ModifyHitpoints_. Negative numbers deal damage, positive numbers heal. Everything that deals damage (spells, projectiles, melee attacks &#8230;) simply call that function with the amount of damage they deal. This way the attacker is in charge of the amount of damage and the _Damagable_ can still modify that before any hitpoints actually get changed. For this the _Damagable_ also exposes a function
+```csharp
+public void AddDamageInterceptorWithDuration(DamageInterceptor interceptor,
+                                             float duration) {
+    damageInterceptors.Add(interceptor);
+    StartCoroutine(UnityUtil.DoAfterDelay(
+        () => RemoveDamageInterceptor(interceptor),
+        duration));
+}
+```
+_DamageInterceptors_ are just a function that take an int and return an int &#8211; that&#8217;s the damage modifying function. And an order so you can control the order they are applied in (additions or multiplications first?). 
+
+```csharp
+public class DamageInterceptor {
+    public int Order = 5;
+    public Func&lt;int, int&gt; Interceptor;
+}
+```
+
+The Damagble then applies all DamageInterceptors before chaning hitpoints (line 6).
+
+```csharp
+public void ModifyHitpoints(int initialAmount) {
+    var orderedInterceptors = damageInterceptors.OrderBy(interceptor =&gt; interceptor.Order);
+
+    var amount =
+        orderedInterceptors.Aggregate(initialAmount, (acc, i) =&gt; i.Interceptor(acc));
+    Hitpoints += amount;
+    // Updating healthbars, triggering float combat text, checking for dead etc
+}
+```
+
+I used this for a &#8220;vulnerability&#8221; ability where affected characters take more damage. This one I&#8217;ve made as a monobehaviour. So simply _AddComponent<Vulnerability>_ to your target at done! The actual interceptor is on line 18-24
+
+```csharp
+public class Vulnerability : MonoBehaviour {
+    public int PercentileIncrease = 25;
+    public float Duration = 5;
+
+    private void Start() {
+        var target = GetComponent&lt;Damageable&gt;();
+        if (target != null) {
+            ApplyDebuff(target);
+        }
+        Destroy(this);
+    }
+
+    private void ApplyDebuff(Damageable target) {
+        var interceptor = new DamageInterceptor {
+            // Apply this effect pretty much last
+            Order = 10,
+            Interceptor = amount =&gt; {
+                // Don't change healing
+                if (amount &gt;= 0) return amount;
+                // Increase dmg
+                var p = (float) PercentileIncrease / 100;
+                return (int) (amount + amount * p);
+            }
+        };
+
+        target.AddDamageInterceptorWithDuration(interceptor, Duration);
+    }
+}
+```
+
+Other ideas for interceptor functions:
+
+Invulnerability &#8211; negate all damage but apply healing. This would need to have a high order so it&#8217;s applied after after additive dmg modifiers.
+
+```csharp
+(amount) =&gt; Matf.Max(0,amount);
+```
+
+Curse that prevents healing and cause 1 point of damage for every 2 points of attempted heal.
+
+```csharp
+(amount) =&gt; amount &lt; 0 ? amount*-0.5 : amount;
+```
+
+You could even use this to simply check damage without modifying
+
+```csharp
+(amount) =&gt; {
+   StatisticsService.saveData(amount);
+   return amount;
+}
+```
+
+I also spent a good amount of time on the actual attack components aswell as the question &#8220;Who knows what?&#8221; because characters need to move in order to attack and some movements should be interrupted by attacking, but I didn&#8217;t want cyclic dependencies&#8230; So now the PlayerController orchestrates the MeleeAttack / RangeATtack & WaypointHandler and they don&#8217;t know about each other. Attack scripts only say if they are in range or not. But this post is already long enough I think. Here&#8217;s a video of some auto-attacks!
+
+<div style="width: 640px;" class="wp-video">
+  <video class="wp-video-shortcode" id="video-115-2" width="640" height="360" loop="1" autoplay="1" preload="metadata" controls="controls"><source type="video/mp4" src="http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4?_=2" /><a href="http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4">http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4</a></video>
+</div>
