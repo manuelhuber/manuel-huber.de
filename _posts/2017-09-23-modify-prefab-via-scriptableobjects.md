@@ -36,37 +36,37 @@ So what&#8217;s going on? The MakeHero method on line 12 is the public interface
 
 ```csharp
 public class CharacterBuilder : ScriptableObject {
-    public int Hitpoints;
-    // and other properties you want to modify on most heroes
+  public int Hitpoints;
+  // and other properties you want to modify on most heroes
 
-    // There's "Melee" and "Ranged"
-    public AttackType AttackType;
-    // Only used for melee
-    [HideInInspector] public int AttackDamage;
-    // only used for ranged
-    [HideInInspector] public GameObject ProjectilePrefab;
+  // There's "Melee" and "Ranged"
+  public AttackType AttackType;
+  // Only used for melee
+  [HideInInspector] public int AttackDamage;
+  // only used for ranged
+  [HideInInspector] public GameObject ProjectilePrefab;
 
-    public GameObject MakeHero(GameObject hero) {
-        hero.GetComponent<Damageable>().MaxHitpoints = Hitpoints;
-        // modify other properties here as well
-        AddAttack(hero);
-        ModifyHero(hero);
-        return hero;
+  public GameObject MakeHero(GameObject hero) {
+    hero.GetComponent<Damageable>().MaxHitpoints = Hitpoints;
+    // modify other properties here as well
+    AddAttack(hero);
+    ModifyHero(hero);
+    return hero;
+  }
+
+  private virtual GameObject ModifyHero(GameObject hero) {
+    return hero;
+  }
+
+  private void AddAttack(GameObject hero) {
+    if (AttackType == AttackType.Melee) {
+      var attack = hero.AddComponent<MeleeAttack>();
+      attack.AttackDamage = AttackDamage;
+    } else {
+      var attack = hero.AddComponent<RangeAttack>();
+      attack.ProjectilePrefab = ProjectilePrefab;
     }
-
-    private virtual GameObject ModifyHero(GameObject hero) {
-        return hero;
-    }
-
-    private void AddAttack(GameObject hero) {
-        if (AttackType == AttackType.Melee) {
-            var attack = hero.AddComponent<MeleeAttack>();
-            attack.AttackDamage = AttackDamage;
-        } else {
-            var attack = hero.AddComponent<RangeAttack>();
-            attack.ProjectilePrefab = ProjectilePrefab;
-        }
-    }
+  }
 }
 ```
 
@@ -74,10 +74,10 @@ What&#8217;s this &#8220;ModifiyHero&#8221; method that doesn&#8217;t do anythin
 
 ```csharp
 public class RogueBuilder : CharacterBuilder {
-    public override GameObject ModifyHero(GameObject hero) {
-        // Very specific code for rogue heroes here
-        return hero;
-    }
+  public override GameObject ModifyHero(GameObject hero) {
+    // Very specific code for rogue heroes here
+    return hero;
+  }
 }
 ```
 
@@ -96,18 +96,18 @@ On line 04 we call the base method &#8211; if we didn&#8217;t do this we would h
 ```csharp
 [CustomEditor(typeof(CharacterBuilder), true, isFallback = true)]
 public class CharacterBuilderEditor : Editor {
-    public override void OnInspectorGUI() {
-        base.OnInspectorGUI();
-        var builder = target as CharacterBuilder;
-        if (builder == null) return;
+  public override void OnInspectorGUI() {
+    base.OnInspectorGUI();
+    var builder = target as CharacterBuilder;
+    if (builder == null) return;
 
-        if (builder.AttackType == AttackType.Melee) {
-            builder.AttackDamage = EditorGUILayout.IntField("Melee Damage", builder.AttackDamage);
-        } else {
-            builder.ProjectilePrefab = (GameObject) EditorGUILayout.ObjectField("Projectile Prefab",
-                builder.ProjectilePrefab, typeof(GameObject), true);
-        }
+    if (builder.AttackType == AttackType.Melee) {
+      builder.AttackDamage = EditorGUILayout.IntField("Melee Damage", builder.AttackDamage);
+    } else {
+      builder.ProjectilePrefab = (GameObject) EditorGUILayout.ObjectField("Projectile Prefab",
+        builder.ProjectilePrefab, typeof(GameObject), true);
     }
+  }
 }
 ```
 
@@ -119,19 +119,19 @@ Now I drag the generic hero prefab and the RogueBuilder asset in the editor into
 
 ```csharp
 public class RaidManager : MonoBehaviour {
-    public GameObject HeroPrefab;
-    public List<CharacterBuilder> Builders;
+  public GameObject HeroPrefab;
+  public List<CharacterBuilder> Builders;
 
-    private void Awake() {
-        Builders.ForEach(SpawnHero);
-    }
+  private void Awake() {
+    Builders.ForEach(SpawnHero);
+  }
 
-    private void SpawnHero(CharacterBuilder builder) {
-        var spawn = new Vector3();
-        var heroInstance = Instantiate(HeroPrefab, spawn, Quaternion.identity);
-        heroInstance = builder.MakeHero(heroInstance);
-        // lots of other stuff happening aswell
-    }
+  private void SpawnHero(CharacterBuilder builder) {
+    var spawn = new Vector3();
+    var heroInstance = Instantiate(HeroPrefab, spawn, Quaternion.identity);
+    heroInstance = builder.MakeHero(heroInstance);
+    // lots of other stuff happening aswell
+  }
 }
 ```
 
@@ -143,11 +143,11 @@ One more thing: As you can see in the last code we modify the hero after it&#821
 
 ```csharp
 public int MaxHitpoints {
-    get { return maxHitpoints; }
-    set {
-        var dif = value - maxHitpoints;
-        maxHitpoints = value;
-        hitpoints += dif;
-    }
+  get { return maxHitpoints; }
+  set {
+    var dif = value - maxHitpoints;
+    maxHitpoints = value;
+    hitpoints += dif;
+  }
 }
 ```

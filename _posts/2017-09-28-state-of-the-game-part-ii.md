@@ -13,18 +13,18 @@ My health system is pretty straight forward. I have a generic _Damagable_ class 
 ```csharp
 public void AddDamageInterceptorWithDuration(DamageInterceptor interceptor,
                                              float duration) {
-    damageInterceptors.Add(interceptor);
-    StartCoroutine(UnityUtil.DoAfterDelay(
-        () => RemoveDamageInterceptor(interceptor),
-        duration));
+  damageInterceptors.Add(interceptor);
+  StartCoroutine(UnityUtil.DoAfterDelay(
+    () => RemoveDamageInterceptor(interceptor),
+    duration));
 }
 ```
 _DamageInterceptors_ are just a function that take an int and return an int &#8211; that&#8217;s the damage modifying function. And an order so you can control the order they are applied in (additions or multiplications first?). 
 
 ```csharp
 public class DamageInterceptor {
-    public int Order = 5;
-    public Func<int, int> Interceptor;
+  public int Order = 5;
+  public Func<int, int> Interceptor;
 }
 ```
 
@@ -32,12 +32,12 @@ The Damagble then applies all DamageInterceptors before chaning hitpoints (line 
 
 ```csharp
 public void ModifyHitpoints(int initialAmount) {
-    var orderedInterceptors = damageInterceptors.OrderBy(interceptor => interceptor.Order);
+  var orderedInterceptors = damageInterceptors.OrderBy(interceptor => interceptor.Order);
 
-    var amount =
-        orderedInterceptors.Aggregate(initialAmount, (acc, i) => i.Interceptor(acc));
-    Hitpoints += amount;
-    // Updating healthbars, triggering float combat text, checking for dead etc
+  var amount =
+    orderedInterceptors.Aggregate(initialAmount, (acc, i) => i.Interceptor(acc));
+  Hitpoints += amount;
+  // Updating healthbars, triggering float combat text, checking for dead etc
 }
 ```
 
@@ -45,32 +45,32 @@ I used this for a &#8220;vulnerability&#8221; ability where affected characters 
 
 ```csharp
 public class Vulnerability : MonoBehaviour {
-    public int PercentileIncrease = 25;
-    public float Duration = 5;
+  public int PercentileIncrease = 25;
+  public float Duration = 5;
 
-    private void Start() {
-        var target = GetComponent<Damageable>();
-        if (target != null) {
-            ApplyDebuff(target);
-        }
-        Destroy(this);
+  private void Start() {
+    var target = GetComponent<Damageable>();
+    if (target != null) {
+      ApplyDebuff(target);
     }
+    Destroy(this);
+  }
 
-    private void ApplyDebuff(Damageable target) {
-        var interceptor = new DamageInterceptor {
-            // Apply this effect pretty much last
-            Order = 10,
-            Interceptor = amount => {
-                // Don't change healing
-                if (amount >= 0) return amount;
-                // Increase dmg
-                var p = (float) PercentileIncrease / 100;
-                return (int) (amount + amount * p);
-            }
-        };
+  private void ApplyDebuff(Damageable target) {
+    var interceptor = new DamageInterceptor {
+      // Apply this effect pretty much last
+      Order = 10,
+      Interceptor = amount => {
+        // Don't change healing
+        if (amount >= 0) return amount;
+        // Increase dmg
+        var p = (float) PercentileIncrease / 100;
+        return (int) (amount + amount * p);
+      }
+    };
 
-        target.AddDamageInterceptorWithDuration(interceptor, Duration);
-    }
+    target.AddDamageInterceptorWithDuration(interceptor, Duration);
+  }
 }
 ```
 
@@ -92,8 +92,8 @@ You could even use this to simply check damage without modifying
 
 ```csharp
 (amount) => {
-   StatisticsService.saveData(amount);
-   return amount;
+  StatisticsService.saveData(amount);
+  return amount;
 }
 ```
 
