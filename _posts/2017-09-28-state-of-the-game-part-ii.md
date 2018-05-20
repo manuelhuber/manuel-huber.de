@@ -35,7 +35,7 @@ _DamageInterceptors_ are just a function that take an int and return an int &#82
 ```csharp
 public class DamageInterceptor {
     public int Order = 5;
-    public Func&lt;int, int&gt; Interceptor;
+    public Func<int, int> Interceptor;
 }
 ```
 
@@ -43,10 +43,10 @@ The Damagble then applies all DamageInterceptors before chaning hitpoints (line 
 
 ```csharp
 public void ModifyHitpoints(int initialAmount) {
-    var orderedInterceptors = damageInterceptors.OrderBy(interceptor =&gt; interceptor.Order);
+    var orderedInterceptors = damageInterceptors.OrderBy(interceptor => interceptor.Order);
 
     var amount =
-        orderedInterceptors.Aggregate(initialAmount, (acc, i) =&gt; i.Interceptor(acc));
+        orderedInterceptors.Aggregate(initialAmount, (acc, i) => i.Interceptor(acc));
     Hitpoints += amount;
     // Updating healthbars, triggering float combat text, checking for dead etc
 }
@@ -60,7 +60,7 @@ public class Vulnerability : MonoBehaviour {
     public float Duration = 5;
 
     private void Start() {
-        var target = GetComponent&lt;Damageable&gt;();
+        var target = GetComponent<Damageable>();
         if (target != null) {
             ApplyDebuff(target);
         }
@@ -71,9 +71,9 @@ public class Vulnerability : MonoBehaviour {
         var interceptor = new DamageInterceptor {
             // Apply this effect pretty much last
             Order = 10,
-            Interceptor = amount =&gt; {
+            Interceptor = amount => {
                 // Don't change healing
-                if (amount &gt;= 0) return amount;
+                if (amount >= 0) return amount;
                 // Increase dmg
                 var p = (float) PercentileIncrease / 100;
                 return (int) (amount + amount * p);
@@ -90,19 +90,19 @@ Other ideas for interceptor functions:
 Invulnerability &#8211; negate all damage but apply healing. This would need to have a high order so it&#8217;s applied after after additive dmg modifiers.
 
 ```csharp
-(amount) =&gt; Matf.Max(0,amount);
+(amount) => Matf.Max(0,amount);
 ```
 
 Curse that prevents healing and cause 1 point of damage for every 2 points of attempted heal.
 
 ```csharp
-(amount) =&gt; amount &lt; 0 ? amount*-0.5 : amount;
+(amount) => amount < 0 ? amount*-0.5 : amount;
 ```
 
 You could even use this to simply check damage without modifying
 
 ```csharp
-(amount) =&gt; {
+(amount) => {
    StatisticsService.saveData(amount);
    return amount;
 }

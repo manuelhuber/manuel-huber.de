@@ -53,7 +53,7 @@ public class CharacterBuilder : ScriptableObject {
     [HideInInspector] public GameObject ProjectilePrefab;
 
     public GameObject MakeHero(GameObject hero) {
-        hero.GetComponent&lt;Damageable&gt;().MaxHitpoints = Hitpoints;
+        hero.GetComponent<Damageable>().MaxHitpoints = Hitpoints;
         // modify other properties here as well
         AddAttack(hero);
         ModifyHero(hero);
@@ -66,10 +66,10 @@ public class CharacterBuilder : ScriptableObject {
 
     private void AddAttack(GameObject hero) {
         if (AttackType == AttackType.Melee) {
-            var attack = hero.AddComponent&lt;MeleeAttack&gt;();
+            var attack = hero.AddComponent<MeleeAttack>();
             attack.AttackDamage = AttackDamage;
         } else {
-            var attack = hero.AddComponent&lt;RangeAttack&gt;();
+            var attack = hero.AddComponent<RangeAttack>();
             attack.ProjectilePrefab = ProjectilePrefab;
         }
     }
@@ -126,7 +126,7 @@ Now I drag the generic hero prefab and the RogueBuilder asset in the editor into
 ```csharp
 public class RaidManager : MonoBehaviour {
     public GameObject HeroPrefab;
-    public List&lt;CharacterBuilder&gt; Builders;
+    public List<CharacterBuilder> Builders;
 
     private void Awake() {
         Builders.ForEach(SpawnHero);
