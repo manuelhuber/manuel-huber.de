@@ -201,6 +201,10 @@ body {
     font-size: 18px;
 }
 
+.text-white {
+    color: white !important;
+}
+
 /* Footer 
 -------------------------------------------------- */
 

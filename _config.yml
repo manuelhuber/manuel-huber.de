@@ -5,7 +5,9 @@ rdiscount:
   extensions: [smart]
 permalink: /:year/:month/:day/:title:output_ext
 paginate: 5
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-archives
 port: 3000
 safe: true
 
@@ -32,3 +34,8 @@ defaults:
     values:
       layout: "post"
       author: "Manuel Huber"
+jekyll-archives:
+  enabled:
+    - tags
+  layouts:
+    tag: tag-archive-layout

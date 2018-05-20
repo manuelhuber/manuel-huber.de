@@ -1,7 +1,7 @@
 ---
 title: State of the Game Part II
 date: 2017-09-28T20:12:20+00:00
-categories:
+tags:
   - DKP
   - Unity
 ---

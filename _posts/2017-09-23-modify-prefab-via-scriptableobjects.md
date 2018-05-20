@@ -1,7 +1,7 @@
 ---
 title: Modify Prefab via ScriptableObjects
 date: 2017-09-23T20:12:58+00:00
-categories:
+tags:
   - Unity
 ---
 Today I spent a good amount of time on something that won&#8217;t improve game play. But it gave me a good feeling because I love the moment when you find a neat solution for a problem that&#8217;s been bugging you.

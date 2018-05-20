@@ -1,7 +1,7 @@
 ---
 title: 'Fucking 50 DKP Minus: Raiders of the Lost Content'
 date: 2017-09-25T18:52:45+00:00
-categories:
+tags:
   - DKP
 ---
 I&#8217;ve decided to write about my game dev experience on my first game &#8220;Fucking 50 DKP Minus: Raiders of the Lost Content&#8221; (or **DKP** for short &#8211; title still WIP) to keep me honest & stay on track and to have a nice memory when I want to look back on that time that I made that one game. I&#8217;m planning on doing a Recap every 2 weeks and describe what progress I made. To keep my tasks and progress in order I started a <a href="http://trello.com" target="_blank" rel="noopener">Trello</a> board &#8211; i guess hours of agile training do leave a mark&#8230; 😀

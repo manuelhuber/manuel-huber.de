@@ -1,7 +1,7 @@
 ---
 title: Hello world!
 date: 2017-09-23T18:07:18+00:00
-categories:
+tags:
   - Meta
 ---
 I&#8217;m an IT student, software engineer and hobby game developer.

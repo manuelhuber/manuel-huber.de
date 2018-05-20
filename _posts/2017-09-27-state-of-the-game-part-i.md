@@ -1,7 +1,7 @@
 ---
 title: State of the Game Part I
 date: 2017-09-27T20:55:31+00:00
-categories:
+tags:
   - DKP
 ---
 I&#8217;ve mainly spent time implementing core mechanics so what you&#8217;re about to see isn&#8217;t flashy but considering I&#8217;ve started with an empty scene and no Unit experience (besides the official tutorials) I&#8217;m happy with the current state of the game. If you don&#8217;t know what DKP is about, check out [Fucking 50 DKP Minus: Raiders of the Lost Content.](http://manuel-huber.de/2017/09/25/fucking-50-dkp-minus-raiders-of-the-lost-content/) Here&#8217;s what I got:
