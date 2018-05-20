@@ -1,17 +1,6 @@
 ---
-id: 110
 title: State of the Game Part I
 date: 2017-09-27T20:55:31+00:00
-author: Manuel
-layout: post
-guid: http://manuel-huber.de/?p=110
-permalink: /2017/09/27/state-of-the-game-part-i/
-enclosure:
-  - |
-    http://manuel-huber.de/wp-content/uploads/2017/09/2017-09-25-20-20-34.mp4
-    1399232
-    video/mp4
-    
 categories:
   - DKP
 ---

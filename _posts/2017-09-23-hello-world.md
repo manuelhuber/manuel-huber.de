@@ -1,11 +1,6 @@
 ---
-id: 1
 title: Hello world!
 date: 2017-09-23T18:07:18+00:00
-author: Manuel
-layout: post
-guid: http://manuel-huber.de/?p=1
-permalink: /2017/09/23/hello-world/
 categories:
   - Meta
 ---

@@ -1,17 +1,6 @@
 ---
-id: 115
 title: State of the Game Part II
 date: 2017-09-28T20:12:20+00:00
-author: Manuel
-layout: post
-guid: http://manuel-huber.de/?p=115
-permalink: /2017/09/28/state-of-the-game-part-ii/
-enclosure:
-  - |
-    http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4
-    1467406
-    video/mp4
-    
 categories:
   - DKP
   - Unity

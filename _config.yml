@@ -3,7 +3,7 @@ highlighter: rouge
 markdown: kramdown
 rdiscount:
   extensions: [smart]
-permalink: /:title.html
+permalink: /:year/:month/:day/:title:output_ext
 paginate: 5
 plugins: [jekyll-paginate]
 port: 3000
@@ -25,3 +25,10 @@ github: manuelhuber
 #Comment out if you don't want disqus
 #disqus: username
 google_analytics: UA-69391421-1
+defaults:
+  -
+    scope:
+      path: "_posts"
+    values:
+      layout: "post"
+      author: "Manuel Huber"

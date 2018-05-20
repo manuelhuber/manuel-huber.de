@@ -1,12 +1,6 @@
 ---
-id: 20
 title: Modify Prefab via ScriptableObjects
 date: 2017-09-23T20:12:58+00:00
-author: Manuel
-layout: post
-guid: http://manuel-huber.de/?p=20
-permalink: /2017/09/23/modify-prefab-via-scriptableobjects/
-image: /wp-content/uploads/2017/09/RogueBuilder.png
 categories:
   - Unity
 ---

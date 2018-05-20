@@ -1,11 +1,6 @@
 ---
-id: 100
 title: 'Fucking 50 DKP Minus: Raiders of the Lost Content'
 date: 2017-09-25T18:52:45+00:00
-author: Manuel
-layout: post
-guid: http://manuel-huber.de/?p=100
-permalink: /2017/09/25/fucking-50-dkp-minus-raiders-of-the-lost-content/
 categories:
   - DKP
 ---
