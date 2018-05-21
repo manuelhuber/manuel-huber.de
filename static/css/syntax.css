@@ -339,6 +339,7 @@
 pre.highlight {
     padding-top: 0;
     padding-bottom: 0;
+    padding-left: 0;
 }
 
 .highlight .lineno {
@@ -356,11 +357,23 @@ pre.highlight {
     word-wrap: normal;
 }
 
+.rouge-code {
+    padding-left: 0;
+}
+
+.rouge-code pre {
+    padding-left: 0;
+}
+
+.rouge-table th, .rouge-table td {
+    border: none;
+}
+
 code pre {
     border: none;
 }
 
-td.code {
+td.rouge-code {
     vertical-align: top;
 }
 

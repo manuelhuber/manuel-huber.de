@@ -205,6 +205,15 @@ body {
     color: white !important;
 }
 
+img {
+    max-width: 100%;
+}
+
+td, th {
+    border: 1px  solid darkgray;
+    padding: 0.25em 0.5em;
+}
+
 /* Footer 
 -------------------------------------------------- */
 
