@@ -99,6 +99,6 @@ You could even use this to simply check damage without modifying
 
 I also spent a good amount of time on the actual attack components aswell as the question "Who knows what?" because characters need to move in order to attack and some movements should be interrupted by attacking, but I didn't want cyclic dependencies... So now the PlayerController orchestrates the MeleeAttack / RangeAttack & WaypointHandler and they don't know about each other. Attack scripts only say if they are in range or not. But this post is already long enough I think. Here's a video of some auto-attacks!
 
-<div style="width: 640px;" class="wp-video">
-  <video class="wp-video-shortcode" id="video-115-2" width="640" height="360" loop="1" autoplay="1" preload="metadata" controls="controls"><source type="video/mp4" src="http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4?_=2" /><a href="http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4">http://manuel-huber.de/wp-content/uploads/2017/09/autoAttacks.mp4</a></video>
-</div>
+<video autoplay="autoplay" loop="loop" width="768" height="512">
+  <source src="/assets/2017/autoAttacks.mp4" type="video/mp4">
+</video>

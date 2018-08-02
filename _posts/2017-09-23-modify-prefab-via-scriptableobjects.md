@@ -21,8 +21,7 @@ So basically I want slight variations of a generic HeroPrefab that are nice to m
 Here's how I did it:
 
 ## Step 1: Create Generic Hero Prefab 
-
-<img src="https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/heroPrefab.png?resize=491%2C612" alt="" width="491" height="612" class="alignnone size-full wp-image-21" srcset="https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/heroPrefab.png?w=491 491w, https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/heroPrefab.png?resize=241%2C300 241w, https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/heroPrefab.png?resize=180%2C224 180w, https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/heroPrefab.png?resize=417%2C520 417w" sizes="(max-width: 491px) 100vw, 491px" data-recalc-dims="1" />
+![heroPrefab](/assets/2017/09/heroPrefab.png)
 
 Here you can see why I didn't want to have a separate prefab for every hero. If I want to change the waypoint prefabs I don't want to do it for every single hero!
 
@@ -83,7 +82,7 @@ public class RogueBuilder : CharacterBuilder {
 
 Then i used [this editor script](http://www.richardlord.net/blog/unity/creating-scriptableobjects-in-unity.html) to create an asset from my RogueBuilder (which extends the CharacterBuilder). When you select the asset you can edit it, like you would a component:
   
-<img src="https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RogueBuilder.png?resize=488%2C203" alt="" width="488" height="203" class="alignnone size-full wp-image-37" srcset="https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RogueBuilder.png?w=488 488w, https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RogueBuilder.png?resize=300%2C125 300w, https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RogueBuilder.png?resize=224%2C93 224w" sizes="(max-width: 488px) 100vw, 488px" data-recalc-dims="1" />
+![RogueBuilder](/assets/2017/09/RogueBuilder.png)
 
 If you copy paste my code you will notice that there's no field for "AttackDamage" or "ProjectilePrefab" - that's because they are both marked to be hidden (line 08 & 10). We only want one of them to be visible depending on if Melee or Range is selected. For this we need a CustomEditor.
 
@@ -115,7 +114,7 @@ public class CharacterBuilderEditor : Editor {
 
 Now I drag the generic hero prefab and the RogueBuilder asset in the editor into my RaidManager (that's who decideds what heroes we get):
   
-<img src="https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RaidManager.png?resize=486%2C195" alt="" width="486" height="195" class="alignnone size-full wp-image-50" srcset="https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RaidManager.png?w=486 486w, https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RaidManager.png?resize=300%2C120 300w, https://i2.wp.com/manuel-huber.de/wp-content/uploads/2017/09/RaidManager.png?resize=224%2C90 224w" sizes="(max-width: 486px) 100vw, 486px" data-recalc-dims="1" />
+![RaidManager](/assets/2017/09/RaidManager.png)
 
 ```csharp
 public class RaidManager : MonoBehaviour {
