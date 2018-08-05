@@ -1,5 +1,6 @@
 ---
 tags: [programming]
+titleFormatted: Code <fat>Reviews</fat>
 ---
 
 Thinking about doing code reviews in your project? Then this is for you:
