@@ -4,12 +4,10 @@ layout: layout
 
 <div class="container">
     <div class="blog-post">
-        <h3>
-            <strong><a href="{{ page.url }}">{{ page.title }}</a></strong>
-        </h3>
+        <h1 class="headline-text">{{ page.titleFormatted }}</h1>
     </div>
     <div class="blog-title">
-        <h4>
+        <h4 class="date-text">
             {{ page.date | date: "%B %e, %Y" }}
             &nbsp;&nbsp;
             {% for tag in page.tags %}
@@ -27,13 +25,17 @@ layout: layout
                     {% for post in site.related_posts limit:3 %}
                     <div class="row">
                         <div class="col-sm-4 col-md-4 col-lg-4">
-                            <h6 style="text-align: right">
+                            <h6 style="text-align: right" class="date-text">
                                 {{ post.date | date: "%B %e, %Y" }}
                             </h6>
                         </div>
                         <div class="col-sm-8 col-md-8 col-lg-8">
                             <h6 style="text-align: left">
-                                <strong><a href="{{ post.url }}">{{ post.title }}</a></strong>
+                                {% if post.titleFormatted %}
+                                <a href="{{ post.url }}">{{ post.titleFormatted }}</a>
+                                {% elsif post.title %}
+                                <a href="{{ post.url }}">{{ post.title }}</a>
+                                {% endif %}
                             </h6>
                         </div>
                     </div>

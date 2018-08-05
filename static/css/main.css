@@ -1,3 +1,10 @@
+:root {
+    --red: #DC3522;
+    --black: #000000;
+    --darkgray: #333333;
+    --gray: #5D5D5D;
+}
+
 /* Main page with stikky-footer
 -------------------------------------------------- */
 html,
@@ -6,7 +13,7 @@ body {
     background-color: #fff;
     font-family: 'Roboto', sans-serif;
     /* The html and body elements cannot have any padding or margin. */
-    border-top: 3px solid #27A822;
+    border-top: 3px solid var(--red);
 }
 
 /* Wrapper for page content to push down footer */
@@ -18,6 +25,27 @@ body {
     margin: 0 auto -65px;
     /* Pad bottom by footer height */
     /*padding: 0 0 60px;*/
+}
+
+.date-text {
+    color: var(--gray);
+}
+
+.headline-text {
+    font-family: 'Roboto Thin', sans-serif;
+    color: var(--black) !important;
+}
+
+fat {
+    font-family: 'Roboto Medium', sans-serif;
+}
+
+.label-success {
+    background-color: var(--gray);
+}
+
+.label-success[href]:focus, .label-success[href]:hover {
+    background-color: var(--red);
 }
 
 /* Navbar
@@ -116,11 +144,11 @@ body {
 }
 
 .container a {
-    color: #27A822;
+    color: var(--black);
 }
 
 .container a:hover {
-    color: #267723;
+    color: var(--red);
 }
 
 .img-responsive {
@@ -226,7 +254,7 @@ td, th {
 }
 
 div.footer {
-    border-bottom: 5px solid #27A822;;
+    border-bottom: 5px solid var(--red);;
 }
 
 /* Set the fixed height of the footer here */
