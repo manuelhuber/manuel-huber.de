@@ -4,7 +4,7 @@ html,
 body {
     height: 100%;
     background-color: #fff;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /* The html and body elements cannot have any padding or margin. */
     border-top: 3px solid #27A822;
 }
@@ -210,7 +210,7 @@ img {
 }
 
 td, th {
-    border: 1px  solid darkgray;
+    border: 1px solid darkgray;
     padding: 0.25em 0.5em;
 }
 
