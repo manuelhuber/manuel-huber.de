@@ -3,8 +3,7 @@ tags: [Intellij, efficiency, programming]
 titleFormatted: IntelliJ - <fat>Navigate</fat> the codebase like you <fat>own</fat> it
 ---
 
-> I cast the shackles of editor tabs from my mind and I was finally free.  
-> -- <cite>Important History Person, 1442</cite>
+> War is peace. Freedom is slavery. Editor tabs are convenient.
 
 Like most people I used the editor tabs in IntelliJ since they are on by default and are familiar from browsers. But after watching [this talk](https://www.youtube.com/watch?v=eq3KiAH4IBI) I decided to ditch this unhealthy habit. And you can too.
 
