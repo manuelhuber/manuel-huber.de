@@ -1,5 +1,6 @@
 :root {
     --red: #DC3522;
+    --darkred: #be080c;
     --black: #000000;
     --darkgray: #333333;
     --gray: #5D5D5D;
@@ -46,6 +47,10 @@ fat {
 
 .label-success[href]:focus, .label-success[href]:hover {
     background-color: var(--red);
+}
+
+.blog-title-link:not(:hover) {
+    color: var(--black) !important;
 }
 
 /* Navbar
@@ -144,11 +149,11 @@ fat {
 }
 
 .container a {
-    color: var(--black);
+    color: var(--red);
 }
 
 .container a:hover {
-    color: var(--red);
+    color: var(--darkred);
 }
 
 .img-responsive {
