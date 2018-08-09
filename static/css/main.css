@@ -28,17 +28,23 @@ body {
     /*padding: 0 0 60px;*/
 }
 
+h5 {
+    font-weight: 400;
+}
+
 .date-text {
     color: var(--gray);
 }
 
 .headline-text {
-    font-family: 'Roboto Thin', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
     color: var(--black) !important;
 }
 
 fat {
-    font-family: 'Roboto Medium', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
 }
 
 .label-success {
