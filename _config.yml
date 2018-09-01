@@ -23,7 +23,7 @@ safe: true
 # edit here to achieve your personal greatness
 url: http://www.manuel-huber.de
 baseurl: /
-cvurl: static/pdf/Manuel-Huber-CV.pdf
+cvurl: /static/pdf/Manuel-Huber-CV.pdf
 title: Manuel Huber
 author: Manuel Huber
 description: In love with code
