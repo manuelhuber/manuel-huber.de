@@ -47,6 +47,11 @@ fat {
     font-weight: 500;
 }
 
+.center {
+    display: block;
+    margin: 0 auto;
+}
+
 .label-success {
     background-color: var(--gray);
 }
