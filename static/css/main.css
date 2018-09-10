@@ -40,6 +40,7 @@ h5 {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     color: var(--black) !important;
+    font-size: 42px;
 }
 
 fat {
