@@ -37,8 +37,7 @@ h5 {
 }
 
 .headline-text {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 100;
+    font-family: 'Roboto Light', sans-serif;
     color: var(--black) !important;
     font-size: 42px;
 }
