@@ -1,3 +1,8 @@
+collections:
+  pages:
+    output: true
+    permalink: /:name
+
 # top level stuff you probably don't need to touch
 markdown: kramdown
 kramdown:
@@ -21,11 +26,12 @@ safe: true
 
 
 # edit here to achieve your personal greatness
+avatar: avatar-dark.png
 url: http://www.manuel-huber.de
 baseurl: /
 cvurl: /static/pdf/Manuel-Huber-CV.pdf
 title: Manuel Huber
-author: Manuel Huber
+author: Manuel "Grim" Huber
 description: In love with code
 email: mail@Manuel-Huber.de
 github: manuelhuber
@@ -41,7 +47,7 @@ defaults:
       path: "_posts"
     values:
       layout: "post"
-      author: "Manuel Huber"
+      author: "Grim"
 
 jekyll-archives:
   enabled:

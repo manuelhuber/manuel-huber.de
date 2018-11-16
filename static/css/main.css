@@ -2,8 +2,10 @@
     --red: #DC3522;
     --darkred: #be080c;
     --black: #000000;
-    --darkgray: #333333;
     --gray: #5D5D5D;
+    --darkgray: #292929;
+    --lightgray: #646464;
+    --background-color: #f6f6f6;
 }
 
 /* Main page with stikky-footer
@@ -11,7 +13,7 @@
 html,
 body {
     height: 100%;
-    background-color: #fff;
+    background-color: var(--background-color);
     font-family: 'Roboto', sans-serif;
     /* The html and body elements cannot have any padding or margin. */
     border-top: 3px solid var(--red);
@@ -72,8 +74,8 @@ fat {
 }
 
 .navbar-default {
-    background-color: #ffffff;
-    border-color: #ffffff;
+    background-color: var(--background-color);
+    border-color: var(--background-color);
 }
 
 .navbar-default .navbar-brand {
@@ -98,20 +100,20 @@ fat {
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #6b6b6b;
-    background-color: #ffffff;
+    background-color: var(--background-color);
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #6b6b6b;
-    background-color: #ffffff;
+    background-color: var(--background-color);
 }
 
 .navbar-default .navbar-toggle {
-    border-color: #ffffff;
+    border-color: var(--background-color);
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #ffffff;
+    background-color: var(--background-color);
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -142,8 +144,51 @@ fat {
 
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
         color: #6b6b6b;
-        background-color: #ffffff;
+        background-color: var(--background-color);
     }
+}
+
+.header-icon-wrapper {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.header-icon {
+    height: 100%;
+    padding: 10px;
+}
+
+/* Achievements
+-------------------------------------------------- */
+
+.achievement-entry {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.achievement-image {
+    margin: 0 auto;
+    background: 50% 50% no-repeat;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    transition: border-radius 400ms;
+}
+
+.achievement-image:hover {
+    border-radius: 0 !important;
+}
+
+.achievement-title {
+    text-align: center !important;
+}
+
+.achievement-text {
+
+}
+
+.img-circle {
+    border: 2px solid var(--darkgray);
 }
 
 /* Custom page CSS
@@ -199,6 +244,7 @@ fat {
 
 .panel {
     border-style: none;
+    background: var(--background-color);
 }
 
 .panel-body {
