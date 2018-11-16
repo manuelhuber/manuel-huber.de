@@ -30,7 +30,7 @@ Yes they are, but there's an even faster way: ``Ctr + N`` opens a search bar tha
 
 ![File Name](/assets/2018/08/file_name.png)
 
-## But I keep use tabs to remember files I still need to work on!
+## But I use tabs to remember files I still need to work on!
 Use bookmarks! ``F11`` marks a line as a bookmark and ``Shift + F11`` opens a list of all bookmarks. This is a way "safer" way to remember places you need to edit since you can actually chose a specific line. If you're done, just remove the bookmark.  
  
 
